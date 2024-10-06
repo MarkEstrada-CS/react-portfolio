@@ -16,18 +16,7 @@ const projects = [
     image: 'images/project2.png',
     link: 'https://example.com/project2',
   },
-  {
-    title: 'Project 3',
-    description: 'Description of project 3.',
-    image: 'images/project3.png',
-    link: 'https://example.com/project3',
-  },
-  {
-    title: 'Project 4',
-    description: 'Description of project 4.',
-    image: 'images/project4.png',
-    link: 'https://example.com/project4',
-  },
+  // Add more projects as needed
 ];
 
 export default function Home() {
@@ -123,28 +112,27 @@ export default function Home() {
         <hr className="w-full border-t border-gray-600 my-4" /> {/* Line Divider */}
 
         <h2 className="text-3xl font-bold mb-6 mt-10">My Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
               whileHover={{ scale: 1.05 }} // Scale effect on hover
-              style={{ width: '60%', height: '40vh' }} // Fixed size
             >
               <a href={project.link} target="_blank" rel="noopener noreferrer">
-                <div className="h-48 w-full flex items-center justify-center overflow-hidden">
+                <div className="h-48 w-full flex items-center justify-center overflow-hidden"> {/* Container for images */}
                   <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="object-cover h-full w-full"
+                    className="object-cover h-full w-full" // Fill the container
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 * index }} // Staggered entrance
                   />
                 </div>
-                <div className="p-4 text-center">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-md text-gray-400">{project.description}</p>
+                <div className="p-4">
+                  <h3 className="text-2xl font-semibold">{project.title}</h3>
+                  <p className="text-md">{project.description}</p>
                 </div>
               </a>
             </motion.div>
